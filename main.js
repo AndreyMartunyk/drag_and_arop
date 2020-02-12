@@ -1,8 +1,8 @@
 const list_items = document.querySelectorAll(".list-item");
 const columns = document.querySelectorAll(".list");
 
-const LIGHT_OPACITY = "0.3";
-const DARK_OPACITY = "0.6";
+const LIGHT_OPACITY = 0.3;
+const DARK_OPACITY = 0.6;
 
 let draggedItem = null;
 
@@ -13,7 +13,7 @@ for (let i = 0; i < list_items.length; i++) {
     draggedItem = item;
     setTimeout(function() {
       item.style.opacity = "0";
-    }, 0);
+    }, 100);
   });
 
   item.addEventListener("dragend", function() {
@@ -33,7 +33,12 @@ for (let j = 0; j < columns.length; j++) {
     this.style.backgroundColor = `rgba(0, 0, 0, ${DARK_OPACITY})`;
 
     if (event.target.className === "list-item") {
-      this.insertBefore(draggedItem, event.target);
+      if (column.lastElementChild === event.target) {
+        this.appendChild(draggedItem);
+      }
+      else{
+        this.insertBefore(draggedItem, event.target);
+      }
     }
 
   });
