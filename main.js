@@ -13,7 +13,7 @@ for (let i = 0; i < list_items.length; i++) {
     draggedItem = item;
     setTimeout(function() {
       item.style.opacity = "0";
-    }, 100);
+    }, 0);
   });
 
   item.addEventListener("dragend", function() {
